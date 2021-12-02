@@ -27,6 +27,7 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Tern test",selectTestFigureOptionListener);
 	}
 
 	/**
@@ -50,12 +51,12 @@ public class TestJobs2dPatterns {
 	 * 
 	 * @param application Application context.
 	 */
-	private static void setupDefaultDrawerVisibilityManagement(Application application) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
-	}
+//	private static void setupDefaultDrawerVisibilityManagement(Application application) {
+//		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
+//		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
+//				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
+//		defaultDrawerWindow.setVisible(true);
+//	}
 
 	/**
 	 * Setup menu for adjusting logging settings.

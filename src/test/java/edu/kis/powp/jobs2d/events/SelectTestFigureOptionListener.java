@@ -21,7 +21,5 @@ public class SelectTestFigureOptionListener implements ActionListener {
 		} else {
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 		}
-
-
 	}
 }

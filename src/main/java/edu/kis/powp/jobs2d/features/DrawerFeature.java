@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d.features;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.events.SelectClearPanelOptionListener;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.ILine;
 
 public class DrawerFeature {
 
@@ -30,5 +31,8 @@ public class DrawerFeature {
 	 */
 	public static DrawPanelController getDrawerController() {
 		return drawerController;
+	}
+	public void drawLines(ILine iLine) {
+		drawerController.drawLine(iLine);
 	}
 }

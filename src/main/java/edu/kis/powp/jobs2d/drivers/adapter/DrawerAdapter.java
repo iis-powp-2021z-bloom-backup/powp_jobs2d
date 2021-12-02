@@ -11,7 +11,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 public class DrawerAdapter extends DrawPanelController implements Job2dDriver {
     private int startX, startY;
     private final DrawPanelController drawPanelController;
-    
+
     public DrawerAdapter(DrawPanelController controller) {
         super();
         drawPanelController = controller;

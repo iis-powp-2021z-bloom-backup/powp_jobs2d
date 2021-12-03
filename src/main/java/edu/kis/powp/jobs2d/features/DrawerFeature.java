@@ -32,7 +32,4 @@ public class DrawerFeature {
 		return drawerController;
 	}
 
-	public void drawLine(ILine iLine){
-		drawerController.drawLine(iLine);
-	}
 }

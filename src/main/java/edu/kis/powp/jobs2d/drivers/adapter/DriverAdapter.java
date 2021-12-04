@@ -13,9 +13,11 @@ import javax.swing.*;
  */
 public class DriverAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
+	private DrawPanelController drawPanelController;
 
 	public DriverAdapter() {
 		super();
+		this.drawPanelController = DrawerFeature.getDrawerController();
 	}
 
 	@Override
@@ -31,7 +33,7 @@ public class DriverAdapter extends DrawPanelController implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 		setPosition(x,y);
 		//drawLine(line);
-		DrawerFeature.getDrawerController().drawLine(line);
+		drawPanelController.drawLine(line);
 	}
 
 	@Override

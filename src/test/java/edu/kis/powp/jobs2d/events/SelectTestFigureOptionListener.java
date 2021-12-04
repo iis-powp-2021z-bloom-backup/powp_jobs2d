@@ -17,7 +17,7 @@ public class SelectTestFigureOptionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-			case "Figure Joe 1": {
+			case "Line dot": {
 				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 				break;
 			}

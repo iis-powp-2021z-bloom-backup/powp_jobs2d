@@ -8,11 +8,14 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.SelectLineMenuOptionListener;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.features.LineFeature;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -43,7 +46,16 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DriverAdapter();
 		DriverFeature.addDriver("Simulator", testDriver);
 
+		Job2dDriver lineDriver = new LineDrawerAdapter();
+		DriverFeature.addDriver("Simulator inc. lines", lineDriver);
+
 		DriverFeature.updateDriverInfo();
+	}
+
+	private static void setupLines(Application application) {
+		LineFeature.addLine("Line basic");
+		LineFeature.addLine("Line dot");
+		LineFeature.addLine("Line special");
 	}
 
 	/**
@@ -87,7 +99,9 @@ public class TestJobs2dPatterns {
 				//setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
+				LineFeature.setupLinePlugin(app);
 				setupDrivers(app);
+				setupLines(app);
 				setupPresetTests(app);
 				setupLogger(app);
 

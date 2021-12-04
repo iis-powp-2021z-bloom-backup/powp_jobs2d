@@ -6,10 +6,13 @@ import java.awt.event.ActionListener;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
+import edu.kis.powp.jobs2d.drivers.DriverWrapper;
+import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
 	private DriverManager driverManager;
+	private DriverWrapper wrapper = new DriverWrapper(0,0);
 
 	public SelectTestFigureOptionListener(DriverManager driverManager) {
 		this.driverManager = driverManager;
@@ -26,6 +29,8 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				DrawerFeature.getDrawerController().clearPanel();
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 				break;
+			case "Figure Jane":
+				FiguresJane.figureScript(wrapper);
 		}
 	}
 

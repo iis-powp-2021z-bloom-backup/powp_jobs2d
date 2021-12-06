@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
@@ -19,10 +20,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "Figure Joe 2": {
+                DrawerFeature.getDrawerController().clearPanel();
                 FiguresJoe.figureScript2(driverManager.getCurrentDriver());
                 break;
             }
             default: {
+                DrawerFeature.getDrawerController().clearPanel();
                 FiguresJoe.figureScript1(driverManager.getCurrentDriver());
                 break;
             }

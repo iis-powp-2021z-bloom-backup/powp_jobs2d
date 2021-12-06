@@ -34,6 +34,6 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Basic Line";
 	}
 }

@@ -4,12 +4,12 @@ import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 
-public class LineDrawerAdapterImpl implements Job2dDriver {
+public class MultiLineAdapter implements Job2dDriver {
     private int startX = 0;
     private int startY = 0;
     private ILine line;
 
-    public LineDrawerAdapterImpl(ILine line) {
+    public MultiLineAdapter(ILine line) {
         super();
         this.line = line;
     }

@@ -24,10 +24,13 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(),"figureScript1");
+		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(),"figureScript2");
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
 	}
 
 	/**
@@ -41,7 +44,9 @@ public class TestJobs2dPatterns {
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
 		Job2dDriver testDriver = new edu.kis.powp.jobs2d.drivers.adapter.DrawPanelControllerAdapter();
+		Job2dDriver testDriver2 = new edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver("Buggy Simulator - special line", testDriver2);
 
 		DriverFeature.updateDriverInfo();
 	}

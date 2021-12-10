@@ -8,10 +8,10 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer with several bugs.
  */
-public class DrawerAdapter extends DrawerFeature implements Job2dDriver {
+public class DrawerDriverAdapter extends DrawerFeature implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
-	public DrawerAdapter() {
+	public DrawerDriverAdapter() {
 		super();
 	}
 	@Override
@@ -26,12 +26,12 @@ public class DrawerAdapter extends DrawerFeature implements Job2dDriver {
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 
-		DrawerFeature.getDrawerController().drawLine(line);
+		getDrawerController().drawLine(line);
 		setPosition(x,y);
 	}
 
 	@Override
 	public String toString() {
-		return "DrawerAdapter";
+		return "DrawerDriverAdapter";
 	}
 }

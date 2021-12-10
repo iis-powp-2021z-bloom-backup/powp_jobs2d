@@ -10,8 +10,8 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.DrawLineManager;
-import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawLineAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawerDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -50,8 +50,8 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDrawerAdapter = new DrawerAdapter();
-		DriverFeature.addDriver("AdapterDrawer Simulator", testDrawerAdapter);
+		Job2dDriver testDrawerAdapter = new DrawerDriverAdapter();
+		DriverFeature.addDriver("Adapter Simulator", testDrawerAdapter);
 
 		Job2dDriver testSpecialDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line", testSpecialDriver);
@@ -59,7 +59,7 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDottedDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
 		DriverFeature.addDriver("Dotted Line", testDottedDriver);
 
-		Job2dDriver testJaneDriver = new DrawLineManager(0, 0, new CustomeLine(Color.RED, true, 5.0f));
+		Job2dDriver testJaneDriver = new DrawLineAdapter(0, 0, new CustomeLine(Color.RED, true, 5.0f));
 		DriverFeature.addDriver("Jane Simulator", testJaneDriver);
 
 
@@ -104,7 +104,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				//setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);

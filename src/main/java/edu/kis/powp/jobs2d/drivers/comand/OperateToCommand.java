@@ -2,7 +2,7 @@ package edu.kis.powp.jobs2d.drivers.comand;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-public class OperateToCommand implements DriverCommand {
+public class OperateToCommand extends DriverCommand {
 
     private int x, y;
     private Job2dDriver job2dDriver;

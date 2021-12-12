@@ -8,6 +8,7 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.drivers.DriverWrapper;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
+import edu.kis.powp.jobs2d.command.FactoryCommand;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
@@ -29,8 +30,18 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				DrawerFeature.getDrawerController().clearPanel();
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 				break;
+			case "Factory Trinagle":
+				DrawerFeature.getDrawerController().clearPanel();
+				FactoryCommand.drawTrinagle(driverManager.getCurrentDriver()).execute();
+				break;
+			case "Factory Figure":
+				DrawerFeature.getDrawerController().clearPanel();
+				FactoryCommand.drawFigure(driverManager.getCurrentDriver()).execute();
+				break;
 			case "Figure Jane":
+				DrawerFeature.getDrawerController().clearPanel();
 				FiguresJane.figureScript(wrapper);
+				break;
 		}
 	}
 

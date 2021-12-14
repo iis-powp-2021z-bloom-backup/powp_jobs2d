@@ -24,12 +24,13 @@ public class OperateToCommand implements DriverCommand {
     }
 
 
-
-
-
+    public OperateToCommand(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     @Override
     public void execute(Job2dDriver driver) {
-        driver.setPosition(x,y);
+        driver.operateTo(x,y);
     }
 }

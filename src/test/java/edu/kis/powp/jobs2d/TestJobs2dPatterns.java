@@ -13,6 +13,8 @@ import edu.kis.powp.jobs2d.drivers.adapter.Adapter;
 import edu.kis.powp.jobs2d.drivers.lineDrawerAdapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListenerThree;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListenerTwo;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
@@ -27,10 +29,16 @@ public class TestJobs2dPatterns {
 	private static void setupPresetTests(Application application) {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListenerTwo selectTestFigureOptionListenerTwo = new SelectTestFigureOptionListenerTwo(
+				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListenerThree selectTestFigureOptionListenerThree = new SelectTestFigureOptionListenerThree(
+				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
+		application.addTest("Test 2", selectTestFigureOptionListenerTwo);
+		application.addTest("Test 3", selectTestFigureOptionListenerThree);
 
 	}
 

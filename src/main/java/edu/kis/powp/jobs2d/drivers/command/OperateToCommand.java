@@ -14,6 +14,7 @@ public class OperateToCommand implements DriverCommand
         this.job = job;
     }
 
+
     @Override
     public void execute() {
         this.job.operateTo(this.x, this.y);

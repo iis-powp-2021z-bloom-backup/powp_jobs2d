@@ -10,6 +10,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawLineAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -28,14 +29,23 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+
 
 		SelectTestJaneFigure selectTestJaneFigure = new SelectTestJaneFigure(DriverFeature.getDriverManager());
+		DriverManager driverManager = DriverFeature.getDriverManager();
+		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(
+				driverManager,TestName.FIGURE_JOE_1));
+		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(
+				driverManager,TestName.FIGURE_JOE_2));
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestJaneFigure);
+
+		application.addTest("Complex Command Test",new SelectTestFigureOptionListener(
+				driverManager,TestName.COMPLEX_COMMAND));
+		application.addTest("Square Factory",new SelectTestFigureOptionListener(
+				driverManager,TestName.SQUARE_FACTORY));
+		application.addTest("Triangle Factory",new SelectTestFigureOptionListener(
+				driverManager,TestName.TRIANGLE_FACTORY));
 
 	}
 

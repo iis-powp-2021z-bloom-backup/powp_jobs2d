@@ -2,31 +2,24 @@ package edu.kis.powp.jobs2d.drivers.command;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    private Job2dDriver job2dDriver;
-    private ArrayList<DriverCommand> commands;
+    List<DriverCommand> commandList;
 
-    public ComplexCommand(Job2dDriver job2dDriver) {
-        this.job2dDriver = job2dDriver;
-        commands = new ArrayList<>();
-    }
-
-    public void add(DriverCommand driverCommand) {
-        commands.add(driverCommand);
-    }
-
-    public void remove(int id) {
-        commands.remove(id);
-    }
-
-    public void set(ArrayList<DriverCommand> commands) {
-        this.commands = commands;
+    public ComplexCommand(List<DriverCommand> commandList) {
+        this.commandList = commandList;
     }
 
     @Override
-    public void execute() {
-        commands.forEach(command -> command.execute());
+    public void execute(Job2dDriver driver) {
+        for(DriverCommand command : this.commandList) {
+            command.execute(driver);
+        }
     }
+
+    public void setCommandList(List<DriverCommand> commandList) {
+        this.commandList = commandList;
+    }
+
 }

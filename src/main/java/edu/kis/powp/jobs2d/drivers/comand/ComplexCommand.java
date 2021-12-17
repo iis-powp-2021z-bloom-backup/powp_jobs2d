@@ -14,5 +14,5 @@ public class ComplexCommand extends DriverCommand {
         for (DriverCommand command:listOfCommands){
             command.execute();
         }
-    }
+    }.
 }

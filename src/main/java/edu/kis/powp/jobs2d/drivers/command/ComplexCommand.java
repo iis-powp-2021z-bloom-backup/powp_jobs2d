@@ -21,12 +21,7 @@ public class ComplexCommand implements DriverCommand{
 
     @Override
     public void execute() {
-        /*
-        for (int i = 0; i<this.commands.size(); i++)
-        {
-            this.commands.get(i).execute();
-        }
-        */
+
         commands.stream().forEach(t -> t.execute());
     }
 

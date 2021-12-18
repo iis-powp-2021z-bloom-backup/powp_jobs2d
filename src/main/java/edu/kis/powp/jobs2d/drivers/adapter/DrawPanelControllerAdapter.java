@@ -16,6 +16,7 @@ public class DrawPanelControllerAdapter implements Job2dDriver {
 
 	public DrawPanelControllerAdapter() {
 		super();
+
 	}
 
 	@Override

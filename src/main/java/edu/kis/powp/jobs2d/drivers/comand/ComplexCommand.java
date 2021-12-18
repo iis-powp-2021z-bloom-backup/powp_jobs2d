@@ -2,7 +2,7 @@ package edu.kis.powp.jobs2d.drivers.comand;
 
 import java.util.List;
 
-public class ComplexCommand extends DriverCommand {
+public class ComplexCommand implements DriverCommand {
 
     public List<DriverCommand> listOfCommands;
 
@@ -10,7 +10,8 @@ public class ComplexCommand extends DriverCommand {
         this.listOfCommands = list;
     }
 
-    @Override public void execute() {
+    @Override
+    public void execute() {
         for (DriverCommand command:listOfCommands){
             command.execute();
         }

@@ -9,9 +9,9 @@ import edu.kis.powp.jobs2d.drivers.command.SetPositionCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Test
+public class FigureFactory
 {
-    public static void test1(DriverManager manager)
+    public static ComplexCommand test1(DriverManager manager)
     {
         ArrayList<DriverCommand> driverCommands = new ArrayList(Arrays.asList(
                 new SetPositionCommand(0, 0, manager.getCurrentDriver()),
@@ -20,12 +20,11 @@ public class Test
                 new OperateToCommand(0, 0, manager.getCurrentDriver())
         ));
 
-        ComplexCommand cc = new ComplexCommand(driverCommands);
-        cc.execute();
+        return new ComplexCommand(driverCommands);
 
     }
 
-    public static void test2(DriverManager manager)
+    public static ComplexCommand test2(DriverManager manager)
     {
         int wsp_x = 3;
         int offset_x = -120;
@@ -49,8 +48,7 @@ public class Test
                 new OperateToCommand(50*wsp_x+ offset_x, 20*wsp_y+ offset_y, manager.getCurrentDriver())
         ));
 
-        ComplexCommand cc = new ComplexCommand(driverCommands);
-        cc.execute();
+        return new ComplexCommand(driverCommands);
 
     }
 

@@ -7,10 +7,10 @@ import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
     private List<DriverCommand> commandList;
-    private Job2dDriver driver;
+//    private Job2dDriver driver;
 
-    public ComplexCommand(Job2dDriver driver) {
-        this.driver = driver;
+    public ComplexCommand() {
+//        this.driver = driver;
         this.commandList = new ArrayList<>();
     }
 
@@ -22,7 +22,7 @@ public class ComplexCommand implements DriverCommand {
     @Override
     public void execute(Job2dDriver driver) {
         for (DriverCommand command : commandList) {
-            command.execute(this.driver);
+            command.execute(driver);
         }
     }
 }

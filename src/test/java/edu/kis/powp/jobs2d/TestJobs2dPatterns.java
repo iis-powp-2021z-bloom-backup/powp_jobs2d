@@ -12,6 +12,7 @@ import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.commands.factories.CommandFactory;
 import static edu.kis.powp.jobs2d.commands.utils.Constants.*;
 
+import edu.kis.powp.jobs2d.commands.factories.FiguresJoeToCommandFactory;
 import edu.kis.powp.jobs2d.drivers.SelectLineMenuOptionListener;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -34,10 +35,13 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
-		
+
+		application.addTest("Figure Joe 1",
+				e -> FiguresJoeToCommandFactory.make(FigureJoe.SCRIPT_1).execute(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest("Figure Joe 2",
+				e -> FiguresJoeToCommandFactory.make(FigureJoe.SCRIPT_2).execute(DriverFeature.getDriverManager().getCurrentDriver()));
+
 		application.addTest(FACTORY_TRIANGLE,
 				e -> CommandFactory.make(Figure.TRIANGLE).execute(DriverFeature.getDriverManager().getCurrentDriver()));
 		application.addTest(FACTORY_SQUARE,

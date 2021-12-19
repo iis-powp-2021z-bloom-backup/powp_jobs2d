@@ -21,6 +21,9 @@ public class CommandFactory {
             case TRIANGLE: {
                 return makeTriangle();
             }
+            case CROSS: {
+                return makeCross();
+            }
         }
         return new ComplexCommand(new ArrayList<>());
     }
@@ -48,4 +51,13 @@ public class CommandFactory {
         return new ComplexCommand(list);
     }
 
+    // builder usage example
+    private static DriverCommand makeCross() {
+        return new ComplexCommand.Builder()
+                .setPosition(10,10)
+                .operateTo(-10,-10)
+                .setPosition(10,-10)
+                .operateTo(-10,10)
+                .build();
+    }
 }

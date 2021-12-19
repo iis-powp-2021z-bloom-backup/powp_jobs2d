@@ -35,7 +35,7 @@ public class ComplexCommand implements DriverCommand {
         listOfOperations.forEach(x -> x.execute(driver));
     }
 
-    public final class Builder {
+    public static final class Builder {
         private final List<DriverCommand> listOfOperations;
 
         public Builder() {

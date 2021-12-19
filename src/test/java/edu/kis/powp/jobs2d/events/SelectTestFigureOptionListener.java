@@ -4,11 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.factory.FigureFactory;
+import edu.kis.powp.jobs2d.factory.RectangleFactory;
+import edu.kis.powp.jobs2d.factory.TriangleFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
 	private DriverManager driverManager;
+	private final static String TERN_T = "Tern test";
+	private final static String RECTANGLE = "Rectangle test";
+	private final static String TRIANGLE = "Triangle test";
 
 	public SelectTestFigureOptionListener(DriverManager driverManager) {
 		this.driverManager = driverManager;
@@ -16,6 +22,16 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+		if (e.getActionCommand().equals(TERN_T)) {
+			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+		} else if (e.getActionCommand().equals(RECTANGLE)) {
+			FigureFactory rectangleFactory = new RectangleFactory();
+			rectangleFactory.drawFigure(driverManager.getCurrentDriver());
+		} else if (e.getActionCommand().equals(TRIANGLE)) {
+			FigureFactory triangleFactory = new TriangleFactory();
+			triangleFactory.drawFigure(driverManager.getCurrentDriver());
+		} else {
+			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+		}
 	}
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 public class ComplexCommand implements DriverCommand{
     private List<DriverCommand> driverCommandList;
-    private Job2dDriver job2dDriver;
 
     public ComplexCommand() {
         this.driverCommandList = new ArrayList<>();
@@ -17,10 +16,14 @@ public class ComplexCommand implements DriverCommand{
         driverCommandList.add(driverCommand);
     }
 
+    public void removeCommand(int i){
+        driverCommandList.remove(i);
+    }
+
     @Override
     public void execute(Job2dDriver driver) {
         for(DriverCommand driverCommand: driverCommandList){
-            driverCommand.execute(job2dDriver);
+            driverCommand.execute(driver);
         }
     }
 }

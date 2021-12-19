@@ -10,7 +10,8 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.commands.factories.CommandFactory;
-import edu.kis.powp.jobs2d.commands.utils.Constants;
+import static edu.kis.powp.jobs2d.commands.utils.Constants.*;
+
 import edu.kis.powp.jobs2d.drivers.SelectLineMenuOptionListener;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -21,6 +22,7 @@ import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.features.LineFeature;
 
 public class TestJobs2dPatterns {
+
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	/**
@@ -35,13 +37,13 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
-
-		application.addTest("Factory Triangle",
-				e -> CommandFactory.make(Constants.Figure.TRIANGLE).execute(DriverFeature.getDriverManager().getCurrentDriver()));
-		application.addTest("Factory Square",
-				e -> CommandFactory.make(Constants.Figure.SQUARE).execute(DriverFeature.getDriverManager().getCurrentDriver()));
-		application.addTest("Factory Cross",
-				e -> CommandFactory.make(Constants.Figure.CROSS).execute(DriverFeature.getDriverManager().getCurrentDriver()));
+		
+		application.addTest(FACTORY_TRIANGLE,
+				e -> CommandFactory.make(Figure.TRIANGLE).execute(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest(FACTORY_SQUARE,
+				e -> CommandFactory.make(Figure.SQUARE).execute(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest(FACTORY_CROSS,
+				e -> CommandFactory.make(Figure.CROSS).execute(DriverFeature.getDriverManager().getCurrentDriver()));
 	}
 
 	/**

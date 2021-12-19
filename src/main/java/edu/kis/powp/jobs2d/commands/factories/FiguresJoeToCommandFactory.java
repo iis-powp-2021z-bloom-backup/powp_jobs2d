@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static edu.kis.powp.jobs2d.commands.utils.Constants.*;
 
-public class FiguresJoeToCommandFactory extends FiguresJoe implements Job2dDriver {
+public class FiguresJoeToCommandFactory implements Job2dDriver {
 
     private ComplexCommand.Builder builder;
 

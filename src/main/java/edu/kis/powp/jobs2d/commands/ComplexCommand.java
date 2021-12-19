@@ -34,4 +34,26 @@ public class ComplexCommand implements DriverCommand {
     public void execute(Job2dDriver driver) {
         listOfOperations.forEach(x -> x.execute(driver));
     }
+
+    public final class Builder {
+        private final List<DriverCommand> listOfOperations;
+
+        public Builder() {
+            this.listOfOperations = new ArrayList<>();
+        }
+
+        public Builder operateTo(int x, int y) {
+            this.listOfOperations.add(new OperateToCommand(x,y));
+            return this;
+        }
+
+        public Builder setPosition(int x, int y) {
+            this.listOfOperations.add(new SetPositionCommand(x,y));
+            return this;
+        }
+
+        public DriverCommand build() {
+            return new ComplexCommand(listOfOperations);
+        }
+    }
 }

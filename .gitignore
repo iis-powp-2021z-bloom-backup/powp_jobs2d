@@ -1,5 +1,6 @@
-/target/
-/doc/
-/.classpath
-/.project
-.settings
+.idea/
+*.iml
+*.iws
+log/
+target/
+out/ 

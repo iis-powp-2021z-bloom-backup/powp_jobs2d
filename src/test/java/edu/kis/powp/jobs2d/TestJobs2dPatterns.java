@@ -9,6 +9,7 @@ import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.events.TestFigure;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.features.LineFeature;
@@ -27,12 +28,15 @@ public class TestJobs2dPatterns {
      * @param application Application context.
      */
     private static void setupPresetTests(Application application) {
-        SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-                DriverFeature.getDriverManager());
-
-        application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-        application.addTest("Figure Joe 2", selectTestFigureOptionListener);
-        application.addTest("Figure Jane", selectTestFigureOptionListener);
+        application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.FIGURE_JOE_1));
+        application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.FIGURE_JOE_2));
+        application.addTest("Figure Jane", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.FIGURE_JANE));
+        application.addTest("Triangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.TRIANGLE));
+        application.addTest("Square", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.SQUARE));
+        application.addTest("Hexagon", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.HEXAGON));
+        application.addTest("Cross", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.CROSS));
+        application.addTest("Figure Joe 1 (ComplexCommand)", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.FIGURE_JOE_1_CC));
+        application.addTest("Figure Joe 2 (ComplexCommand)", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TestFigure.FIGURE_JOE_2_CC));
     }
 
     /**

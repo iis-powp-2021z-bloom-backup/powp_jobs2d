@@ -11,6 +11,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.FiguresFactory;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.CustomLine;
@@ -31,6 +32,10 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Square", e -> FiguresFactory.square(-100, -100, 200)
+				.execute(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest("Triangle", e -> FiguresFactory.triangle(-50, 50, 100)
+				.execute(DriverFeature.getDriverManager().getCurrentDriver()));
 	}
 
 	/**

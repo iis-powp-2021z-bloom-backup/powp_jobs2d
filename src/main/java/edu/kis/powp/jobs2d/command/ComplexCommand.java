@@ -14,7 +14,7 @@ public class ComplexCommand implements DriverCommand {
         this.drivers = drivers;
     }
 
-    ComplexCommand addDriverCommand(DriverCommand driverCommand) {
+    public ComplexCommand addDriverCommand(DriverCommand driverCommand) {
         drivers.add(driverCommand);
         return this;
     }

@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    private final List<DriverCommand> drivers;
+    private final List<DriverCommand> commands;
 
     public ComplexCommand() {
-        drivers = new ArrayList<>();
+        commands = new ArrayList<>();
     }
 
     public ComplexCommand(List<DriverCommand> drivers) {
-        this.drivers = drivers;
+        this.commands = drivers;
     }
 
     public ComplexCommand addDriverCommand(DriverCommand driverCommand) {
-        drivers.add(driverCommand);
+        commands.add(driverCommand);
         return this;
     }
 
     @Override
     public void execute() {
-        drivers.forEach(DriverCommand::execute);
+        commands.forEach(DriverCommand::execute);
     }
 }

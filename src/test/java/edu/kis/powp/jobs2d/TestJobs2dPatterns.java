@@ -4,6 +4,10 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.ComplexCommand;
+import edu.kis.powp.jobs2d.command.DriverCommand;
+import edu.kis.powp.jobs2d.command.OperateToCommand;
+import edu.kis.powp.jobs2d.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -30,6 +34,8 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 		SelectTestFigureOptionListener selectTestFigure2OptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureCommandOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager());
 
 		selectTestFigureOptionListener.addAction(() ->
 				FiguresJoe.figureScript1(selectTestFigureOptionListener.getDriverManager().getCurrentDriver()));
@@ -37,8 +43,18 @@ public class TestJobs2dPatterns {
 		selectTestFigure2OptionListener.addAction(() ->
 				FiguresJoe.figureScript2(selectTestFigure2OptionListener.getDriverManager().getCurrentDriver()));
 
+		selectTestFigureCommandOptionListener.addAction(() -> {
+			ComplexCommand complexCommand = new ComplexCommand();
+			complexCommand.addDriverCommand(new SetPositionCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120))
+			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 60, 120))
+			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 90, 60))
+			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120));
+			complexCommand.execute();
+		});
+
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
+		application.addTest("Test complex command", selectTestFigureCommandOptionListener);
 	}
 
 	/**

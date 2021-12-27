@@ -5,7 +5,6 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.command.ComplexCommand;
-import edu.kis.powp.jobs2d.command.DriverCommand;
 import edu.kis.powp.jobs2d.command.OperateToCommand;
 import edu.kis.powp.jobs2d.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
@@ -18,8 +17,11 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static edu.kis.powp.jobs2d.utils.Point.point;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -36,6 +38,10 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 		SelectTestFigureOptionListener selectTestFigureCommandOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureCommandSquareOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureCommandTriangleOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager());
 
 		selectTestFigureOptionListener.addAction(() ->
 				FiguresJoe.figureScript1(selectTestFigureOptionListener.getDriverManager().getCurrentDriver()));
@@ -45,16 +51,28 @@ public class TestJobs2dPatterns {
 
 		selectTestFigureCommandOptionListener.addAction(() -> {
 			ComplexCommand complexCommand = new ComplexCommand();
-			complexCommand.addDriverCommand(new SetPositionCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120))
-			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 60, 120))
-			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 90, 60))
-			.addDriverCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120));
-			complexCommand.execute();
+			complexCommand.addCommand(new SetPositionCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120))
+			.addCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 60, 120))
+			.addCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 90, 60))
+			.addCommand(new OperateToCommand(selectTestFigureCommandOptionListener.getDriverManager().getCurrentDriver(), 120, 120))
+			.execute();
 		});
+
+		selectTestFigureCommandSquareOptionListener.addAction(() ->
+				ComplexCommand.createSquare(selectTestFigureCommandSquareOptionListener.getDriverManager().getCurrentDriver(),
+						100, 100, 50).execute());
+
+		selectTestFigureCommandTriangleOptionListener.addAction(() ->
+				ComplexCommand.createFigure(selectTestFigureCommandTriangleOptionListener.getDriverManager().getCurrentDriver(),
+				List.of(point(50, 50),
+						point(50, 25),
+						point(75, 50))).execute());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
 		application.addTest("Test complex command", selectTestFigureCommandOptionListener);
+		application.addTest("Test square command factory", selectTestFigureCommandSquareOptionListener);
+		application.addTest("Test figure command factory", selectTestFigureCommandTriangleOptionListener);
 	}
 
 	/**

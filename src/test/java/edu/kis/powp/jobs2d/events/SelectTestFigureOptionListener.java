@@ -31,6 +31,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			case TRIANGLE:
 				ExampleScripts.triangleScript(driverManager.getCurrentDriver());
 				break;
+			case CUSTOM_SCRIPT:
+				ExampleScripts.customScript(driverManager.getCurrentDriver());
+				break;
 		}
 	}
 }

@@ -8,7 +8,8 @@ public enum TestNames {
     FIGURE_JOE_2("Figure Joe 2"),
     FIGURE_JANE_1("Figure Jane 1"),
     SQUARE("Command square"),
-    TRIANGLE("Command triangle");
+    TRIANGLE("Command triangle"),
+    CUSTOM_SCRIPT("Custom script");
 
     private final String label;
 

@@ -1,4 +1,4 @@
-package edu.kis.powp.jobs2d.figures;
+package edu.kis.powp.jobs2d.command.figures;
 
 import edu.kis.powp.jobs2d.command.ComplexCommand;
 import edu.kis.powp.jobs2d.command.DriverCommand;
@@ -42,7 +42,7 @@ public class FiguresFactory {
 
         list.add(new SetPositionCommand(x, y));
         list.add(new OperateToCommand(x + length, y));
-        // It's a formula for determining the vertex of an equilateral triangle
+        // It's a formula for determining the vertex of an equilateral triangle. The '-' was added to put vertex above the base of triangle.
         list.add(new OperateToCommand(x + length / 2,  - (int) (length * Math.sqrt(3)) / 2));
         list.add(new OperateToCommand(x, y));
 

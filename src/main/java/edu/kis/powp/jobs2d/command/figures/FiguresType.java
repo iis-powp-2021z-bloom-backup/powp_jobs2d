@@ -1,4 +1,4 @@
-package edu.kis.powp.jobs2d.figures;
+package edu.kis.powp.jobs2d.command.figures;
 
 public enum FiguresType {
 

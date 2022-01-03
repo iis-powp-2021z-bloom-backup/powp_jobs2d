@@ -9,6 +9,8 @@ import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.legacy.drawer.shape.LineFactory;
+import edu.kis.powp.jobs2d.figures.FiguresFactory;
+import edu.kis.powp.jobs2d.figures.FiguresType;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -33,6 +35,8 @@ public class TestJobs2dPatterns {
 		application.addTest(FIGURE_JOE_1.getLabel(), selectTestFigureOptionListener);
 		application.addTest(FIGURE_JOE_2.getLabel(), selectTestFigureOptionListener);
 		application.addTest(FIGURE_JANE_1.getLabel(), selectTestFigureOptionListener);
+		application.addTest(TRIANGLE.getLabel(), selectTestFigureOptionListener);
+		application.addTest(SQUARE.getLabel(), selectTestFigureOptionListener);
 	}
 
 	/**

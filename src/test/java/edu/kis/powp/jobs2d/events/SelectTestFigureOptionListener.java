@@ -2,6 +2,9 @@ package edu.kis.powp.jobs2d.events;
 
 import edu.kis.powp.jobs2d.collection.TestNames;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.figures.FiguresFactory;
+import edu.kis.powp.jobs2d.figures.FiguresType;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 import java.awt.event.ActionEvent;
@@ -23,6 +26,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case FIGURE_JOE_2:
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			case SQUARE:
+				FiguresFactory.createFigure(FiguresType.SQUARE, -200, 0, 200).execute(DriverFeature.getDriverManager().getCurrentDriver());
+				break;
+			case TRIANGLE:
+				FiguresFactory.createFigure(FiguresType.TRIANGLE, -200, 0, 200).execute(DriverFeature.getDriverManager().getCurrentDriver());
 				break;
 		}
 	}

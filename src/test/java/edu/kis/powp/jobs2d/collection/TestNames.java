@@ -6,7 +6,9 @@ public enum TestNames {
 
     FIGURE_JOE_1("Figure Joe 1"),
     FIGURE_JOE_2("Figure Joe 2"),
-    FIGURE_JANE_1("Figure Jane 1");
+    FIGURE_JANE_1("Figure Jane 1"),
+    SQUARE("Command square"),
+    TRIANGLE("Command triangle");
 
     private final String label;
 

@@ -9,28 +9,32 @@ import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+import edu.kis.powp.jobs2d.Figure;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
 	private DriverManager driverManager;
-	private String figure;
+	private Figure figure;
 
-	public SelectTestFigureOptionListener(DriverManager driverManager, String name) {
+
+
+	public SelectTestFigureOptionListener(DriverManager driverManager, Figure name) {
 		this.driverManager = driverManager;
 		this.figure = name;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (figure == "figureScript1")
+
+		if (figure.equals(Figure.figureScript1))
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-		else if (figure == "figureScript2")
+		else if (figure.equals(Figure.figureScript2))
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
-		else if (figure == "rect"){
-			Factory factory = new Rectangle();
+		else if (figure.equals(Figure.rect)){
+			Factory factory = (Factory) new Rectangle();
 			factory.getShape(driverManager).execute(driverManager.getCurrentDriver());
-		}else if (figure == "circle"){
-			Factory factory = new Circle();
+		}else if (figure.equals(Figure.circle)){
+			Factory factory = (Factory) new Circle();
 			factory.getShape(driverManager).execute(driverManager.getCurrentDriver());
 		}
 	}

@@ -10,8 +10,8 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Figures1Builder implements Job2dDriver, Builder {
-    private final List<DriverCommand> commandList = new ArrayList<>();
+public class FigureBuilder implements Job2dDriver {
+    private List<DriverCommand> commandList = new ArrayList<>();
 
     @Override
     public void setPosition(int x, int y) {
@@ -23,7 +23,6 @@ public class Figures1Builder implements Job2dDriver, Builder {
         this.commandList.add(new OperateToCommand(x, y));
     }
 
-    @Override
     public Object build() {
         if (this.commandList.size() == 0) {
             FiguresJoe.figureScript1(this);

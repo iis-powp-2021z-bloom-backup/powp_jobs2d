@@ -37,13 +37,31 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
 
 		ActionListener selectTestFigureTriangleListener = actionEvent ->
-				FiguresFactory.getFigure(FiguresFactory.Figure.TRIANGLE).execute(DriverFeature.getDriverManager().getCurrentDriver());
+				FiguresFactory.getTriangleCommands(50, 50, 150).execute(DriverFeature.getDriverManager().getCurrentDriver());
 		application.addTest("Triangle", selectTestFigureTriangleListener);
 
-		ActionListener selectTestFigureRectangleListener = actionEvent ->
-				FiguresFactory.getFigure(FiguresFactory.Figure.RECTANGLE).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		ActionListener selectTestFigureSquareListener = actionEvent -> FiguresFactory.getSquareCommands(50, 50, 50).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("Small Square", selectTestFigureSquareListener);
 
-		application.addTest("Rectangle", selectTestFigureRectangleListener);
+		ActionListener selectTestFigureBigRectangleListener = actionEvent ->
+				FiguresFactory.getSquareCommands(0, 50, 250).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("Bigger Square", selectTestFigureBigRectangleListener);
+
+		ActionListener selectTestFigureTrapeziumListener = actionEvent ->
+				FiguresFactory.getTrapeziumCommands(0, 0, 100).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("Trapezium", selectTestFigureTrapeziumListener);
+
+		ActionListener selectTestFigureReversedTrapeziumListener = actionEvent ->
+				FiguresFactory.getTrapeziumCommands(0, 0, -100).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("UpsideDown Trapezium", selectTestFigureReversedTrapeziumListener);
+
+		ActionListener selectTestFigureCrossListener = actionEvent ->
+				FiguresFactory.getCrossCommands(0, 0, 100).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("Cross", selectTestFigureCrossListener);
+
+		ActionListener selectTestFigureStarListener = actionEvent ->
+				FiguresFactory.getArrowTipCommands(0, 0, 100).execute(DriverFeature.getDriverManager().getCurrentDriver());
+		application.addTest("ArrowTip", selectTestFigureStarListener);
 	}
 
 	/**

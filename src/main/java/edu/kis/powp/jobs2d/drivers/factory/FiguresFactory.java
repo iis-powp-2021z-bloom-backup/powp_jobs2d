@@ -1,4 +1,4 @@
-package edu.kis.powp.jobs2d.drivers;
+package edu.kis.powp.jobs2d.drivers.factory;
 
 import edu.kis.powp.jobs2d.drivers.command.ComplexCommand;
 import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
@@ -10,66 +10,53 @@ import java.util.List;
 
 public class FiguresFactory {
 
-    public enum Figure {
-        RECTANGLE,
-        TRIANGLE
+    public static ComplexCommand getSquareCommands(int startX, int startY, int distance) {
+        List<DriverCommand> commandList = new ArrayList<>();
+        commandList.add(new SetPositionCommand(startX, startY));
+        commandList.add(new OperateToCommand(startX + distance, startY));
+        commandList.add(new OperateToCommand(startX + distance, startY + distance));
+        commandList.add(new OperateToCommand(startX, startY + distance));
+        commandList.add(new OperateToCommand(startX, startY));
+        return new ComplexCommand(commandList);
     }
 
-    private static class Rectangle {
-        public static final int x1 = 200;
-        public static final int y1 = 200;
-
-        public static final int x2 = 200;
-        public static final int y2 = -200;
-
-        public static final int x3 = -200;
-        public static final int y3 = -200;
-
-        public static final int x4 = -200;
-        public static final int y4 = 200;
-
-        public static ComplexCommand getCommandList() {
-            List<DriverCommand> commandList = new ArrayList<>();
-            commandList.add(new SetPositionCommand(x1, y1));
-            commandList.add(new OperateToCommand(x1, y1));
-            commandList.add(new OperateToCommand(x2, y2));
-            commandList.add(new OperateToCommand(x3, y3));
-            commandList.add(new OperateToCommand(x4, y4));
-            commandList.add(new OperateToCommand(x1, y1));
-            return new ComplexCommand(commandList);
-        }
+    public static DriverCommand getTriangleCommands(int startX, int startY, int distance) {
+        List<DriverCommand> commandList = new ArrayList<>();
+        commandList.add(new SetPositionCommand(startX, startY));
+        commandList.add(new OperateToCommand(startX+distance, startY));
+        commandList.add(new OperateToCommand(startX, startY+distance));
+        commandList.add(new OperateToCommand(startX, startY));
+        return new ComplexCommand(commandList);
     }
 
-    private static class Triangle {
-        public static final int x1 = 0;
-        public static final int y1 = 100;
-
-        public static final int x2 = 100;
-        public static final int y2 = 0;
-
-        public static final int x3 = -100;
-        public static final int y3 = 0;
-
-
-        public static ComplexCommand getCommandList() {
-            List<DriverCommand> commandList = new ArrayList<>();
-            commandList.add(new SetPositionCommand(x1, y1));
-            commandList.add(new OperateToCommand(x1, y1));
-            commandList.add(new OperateToCommand(x2, y2));
-            commandList.add(new OperateToCommand(x3, y3));
-            commandList.add(new OperateToCommand(x1, y1));
-            return new ComplexCommand(commandList);
-        }
+    public static ComplexCommand getTrapeziumCommands(int startX, int startY, int heightsDistance) {
+        List<DriverCommand> commandList = new ArrayList<>();
+        commandList.add(new SetPositionCommand(startX, startY));
+        commandList.add(new OperateToCommand(startX - 2*heightsDistance, startY));
+        commandList.add(new OperateToCommand(startX - (3*heightsDistance)/2, startY - heightsDistance));
+        commandList.add(new OperateToCommand(startX - heightsDistance/2, startY - heightsDistance));
+        commandList.add(new OperateToCommand(startX, startY));
+        return new ComplexCommand(commandList);
     }
 
-    public static ComplexCommand getFigure(Figure figure) {
-        switch (figure) {
-            case TRIANGLE:
-                return Triangle.getCommandList();
-            case RECTANGLE:
-                return Rectangle.getCommandList();
-            default:
-                return null;
-        }
+    public static ComplexCommand getCrossCommands(int startX, int startY, int size) {
+        List<DriverCommand> commandList = new ArrayList<>();
+        commandList.add(new SetPositionCommand(startX, startY));
+        commandList.add(new OperateToCommand(startX + size, startY + size));
+        commandList.add(new SetPositionCommand(startX, startY + size));
+        commandList.add(new OperateToCommand(startX + size, startY));
+        return new ComplexCommand(commandList);
+    }
+
+    public static ComplexCommand getArrowTipCommands(int startX, int startY, int side) {
+        List<DriverCommand> commandList = new ArrayList<>();
+        commandList.add(new SetPositionCommand(startX, startY));
+        commandList.add(new OperateToCommand(startX + side/2, startY + side/2));
+        commandList.add(new OperateToCommand(startX + side, startY));
+        commandList.add(new OperateToCommand(startX + side*2, startY));
+        commandList.add(new OperateToCommand(startX + side/2, startY - side));
+        commandList.add(new OperateToCommand(startX - side, startY));
+        commandList.add(new OperateToCommand(startX, startY));
+        return new ComplexCommand(commandList);
     }
 }
